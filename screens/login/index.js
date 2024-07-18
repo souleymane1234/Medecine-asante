@@ -9,20 +9,89 @@ import {
   ImageBackground,
   TouchableOpacity,
   Image,
-  Dimensions
+  Dimensions,
+  Alert
 } from 'react-native';
 import {Input, Icon} from '@rneui/themed';
 import {COLORS} from '../../variables/color';
 import Button from '../../components/Button';
+import OrientationLoadingOverlay from 'react-native-orientation-loading-overlay';
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
 const Login = ({navigation}) => {
 
+  const [numeroMedecin, setNumeroMedecin] = useState();
+  const [password, setPassword] = useState();
+  const [maData, setMaData] = useState();
+  const [Spinner, setSpinner] = useState(false);
+
+
+
+  const SendData = () => {
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+    
+    const raw = JSON.stringify({
+      "username": numeroMedecin,
+      "password": password
+    });
+    
+    const requestOptions = {
+      method: "POST",
+      headers: myHeaders,
+      body: raw,
+      redirect: "follow"
+    };
+    setSpinner(!Spinner);
+    fetch("https://production-api-rest-a-sante-core.ovh.syabe-tech.com/api/v1/connect", requestOptions)
+    .then((response) => response.json())
+    // .then((result) => console.log(result))
+    // .catch((error) => console.error(error));
+    .then(result => {
+        setSpinner(!Spinner);
+        if (result.status == true) {
+          setSpinner(false);
+          navigation.navigate('HomeScreen', {
+            Data: result,
+          });
+          console.log(result)
+          setSpinner(false);
+        } else {
+          setSpinner(false);
+          Alert.alert(
+            'Identifiants incorrects',
+            'Nom d’utilisateur ou mot de passe incorrect',
+          );
+        }
+        console.log('Patience');
+      })
+      .catch(error => {
+        setSpinner(false);
+        console.error(error);
+        Alert.alert(
+          'Identifiants incorrects',
+          'Veulliez vérifié votre nom d’utilisateur ou mot de passe',
+        );
+        setSpinner(false);
+      });
+  };
+
+  const Loader = (
+    <OrientationLoadingOverlay
+      visible={Spinner}
+      color="white"
+      indicatorSize="large"
+      messageFontSize={10}
+      message="Veillez patienter un moment!!"
+    />
+  );
+
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar animated={true} backgroundColor={COLORS.white} />
+      {Loader}
       <ScrollView>
         <View style={{height: windowHeight/2}}>
         <View style={styles.logoView}>
@@ -43,18 +112,22 @@ const Login = ({navigation}) => {
                 <View style={{margin: 10}}>
                     <Text style={{fontSize: 26, margin: 10, fontWeight: "bold", color: "#fff"}}>Connectez-vous </Text>
                     <Input
-                        placeholder="Email / Numéro d’ordre de médecin"
+                        placeholder="Numéro d’ordre de médecin"
                         placeholderTextColor= "#fff" 
+                        onChangeText={numeroMedecin => setNumeroMedecin(numeroMedecin)}
                         inputContainerStyle={{
                         borderColor: COLORS.white,
                         }}
+                        style={{color: COLORS.white}}
                     />
                     <Input
                         placeholder="Mot de passe"
                         placeholderTextColor= "#fff" 
+                        onChangeText={password => setPassword(password)}
                         inputContainerStyle={{
                         borderColor: COLORS.white,
                         }}
+                        style={{color: COLORS.white}}
                     />
                     <TouchableOpacity style={{margin: 10}}>
                         <Text style={{color: COLORS.white, fontSize: 12}}>Mot de passe oublié ?</Text>
@@ -65,7 +138,7 @@ const Login = ({navigation}) => {
                         title="Se connecter"
                         style={styles.signUpBtn}
                         textStyle={styles.signUpBtnTxt}
-                        onPress={() => navigation.navigate('HomeScreen')}
+                        onPress={() => SendData()}
                     />
                     <View style={styles.newAccountView}>
                         <Text style={styles.confidentialText}>
@@ -108,7 +181,7 @@ const styles = StyleSheet.create({
     justifyContent: "flex-end",
   },
   signUpBtn: {
-    height: 60,
+    height: 50,
     borderRadius: 39,
     marginVertical: 10,
     width: '60%',

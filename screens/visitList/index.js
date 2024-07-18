@@ -55,43 +55,43 @@ const VisitList = ({navigation}) => {
                 <View style={{margin: 10}}>
                     <Text style={{fontSize: 22, fontWeight: "bold", color: "#000"}}>Sanogo Adama</Text>
                     <Text>consectetuer adipiscing elit, sed diam nonummy </Text>
-                    <View style={{flexDirection: "row"}}>
+                    <View style={{flexDirection: "row", top: 5}}>
                         <View>                
                         <Image
                             source={require('../../assets/time.png')}
                             style={{}}
                         />
                         </View>
-                        <Text style={{marginHorizontal: 10}}>Lundi 19 Février, 2024                        Heure 9:00 - 9:30</Text>
+                        <Text style={{marginHorizontal: 10, fontSize: 12}}>Lundi 19 Février, 2024                        Heure 9:00 - 9:30</Text>
                     </View>
                 </View>
-                <View style={{backgroundColor: "#000", width: 40, height: 40,  alignItems: "center", justifyContent: "center", borderRadius: 20, margin: 10, alignSelf: "center"}}>
+                {/* <View style={{backgroundColor: "#000", width: 40, height: 40,  alignItems: "center", justifyContent: "center", borderRadius: 20, margin: 10, alignSelf: "center"}}>
                     <Image
                         source={require('../../assets/direction.png')}
                         style={{}}
                     />
-                </View>
+                </View> */}
             </TouchableOpacity>
             <View style={styles.hystotisConsultation}>
                 <View style={{margin: 10}}>
                     <Text style={{fontSize: 22, fontWeight: "bold", color: "#000"}}>Coulibaly Sam</Text>
                     <Text>consectetuer adipiscing elit, sed diam nonummy </Text>
-                    <View style={{flexDirection: "row"}}>
+                    <View style={{flexDirection: "row", top: 5}}>
                         <View>                
                         <Image
                             source={require('../../assets/time.png')}
                             style={{}}
                         />
                         </View>
-                        <Text style={{marginHorizontal: 10}}>Lundi 19 Février, 2024                        Heure 9:00 - 9:30</Text>
+                        <Text style={{marginHorizontal: 10, fontSize: 12}}>Lundi 19 Février, 2024                        Heure 9:00 - 9:30</Text>
                     </View>
                 </View>
-                <View style={{backgroundColor: "#000", width: 40, height: 40,  alignItems: "center", justifyContent: "center", borderRadius: 20, margin: 10, alignSelf: "center"}}>
+                {/* <View style={{backgroundColor: "#000", width: 40, height: 40,  alignItems: "center", justifyContent: "center", borderRadius: 20, margin: 10, alignSelf: "center"}}>
                     <Image
                         source={require('../../assets/direction.png')}
                         style={{}}
                     />
-                </View>
+                </View> */}
             </View>
             <View style={{margin: 10}}>
                 <Text style={{color: COLORS.black, fontSize: 14, fontWeight: "700"}}>7 derniers jours</Text>
@@ -99,24 +99,24 @@ const VisitList = ({navigation}) => {
                 <View style={{margin: 10}}>
                     <Text style={{fontSize: 22, fontWeight: "bold", color: "#000"}}>Albert Kala</Text>
                     <Text>consectetuer adipiscing elit, sed diam nonummy </Text>
-                    <View style={{flexDirection: "row"}}>
+                    <View style={{flexDirection: "row", top: 5}}>
                         <View>                
                         <Image
                             source={require('../../assets/time.png')}
                             style={{}}
                         />
                         </View>
-                        <Text style={{marginHorizontal: 10}}>Lundi 19 Février, 2024                        Heure 9:00 - 9:30</Text>
+                        <Text style={{marginHorizontal: 10, fontSize: 12}}>Lundi 19 Février, 2024                        Heure 9:00 - 9:30</Text>
                     </View>
                 </View>
-                <View style={{backgroundColor: "#000", width: 40, height: 40,  alignItems: "center", justifyContent: "center", borderRadius: 20, margin: 10, alignSelf: "center"}}>
+                {/* <View style={{backgroundColor: "#000", width: 40, height: 40,  alignItems: "center", justifyContent: "center", borderRadius: 20, margin: 10, alignSelf: "center"}}>
                     <Image
                         source={require('../../assets/direction.png')}
                         style={{}}
                     />
-                </View>
+                </View> */}
             </View>
-            <View style={styles.hystotisConsultation7}>
+            {/* <View style={styles.hystotisConsultation7}>
                 <View style={{margin: 10}}>
                     <Text style={{fontSize: 22, fontWeight: "bold", color: "#000"}}>Franck Yao</Text>
                     <Text>consectetuer adipiscing elit, sed diam nonummy </Text>
@@ -157,7 +157,7 @@ const VisitList = ({navigation}) => {
                         style={{}}
                     />
                 </View>
-            </View>
+            </View> */}
             </View>
       </View>
       

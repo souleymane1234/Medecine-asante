@@ -46,6 +46,63 @@ const Register = ({navigation}) => {
   const [maData, setMaData] = useState();
 
 
+  const SendData = () => {
+
+    const formdata = new FormData();
+  //   const formData = new FormData();
+  //   const reader = new FileReader();
+   
+  //   if (photo) {
+  //        reader.readAsDataURL(photo);
+  //      }
+  //   reader.onload = (readerEvent) => {
+  //   formData.append("photoprofil", readerEvent.target.result);
+  //   formData.append("photocartecni", readerEvent.target.result);
+  //  };
+
+    formdata.append("corpsmedicalid", "");
+    formdata.append("specialiteid", "1");
+    formdata.append("nom", "Ouattara");
+    formdata.append("prenom", "Soknan");
+    formdata.append("sexe", "F");
+    formdata.append("email", "soknannn@test.com");
+    formdata.append("contact", "0909010109");
+    formdata.append("numeroordre", "0002255jd");
+    formdata.append("type", "2");
+    formdata.append("password", "Azerty!2024");
+    formdata.append("typecorpsmedicalid", "1");
+    // formdata.append("photoprofil", fileInput.files[0], "[PROXY]");
+    // formdata.append("photocartecni", fileInput.files[0], "[PROXY]");
+
+    const requestOptions = {
+      method: "POST",
+      body: formdata,
+      redirect: "follow"
+    };
+    setSpinner(!Spinner);
+    fetch("https://production-api-rest-a-sante-core.ovh.syabe-tech.com/api/v1/connect/signincorpsmedical/", requestOptions)
+    .then((response) => response.text())
+    .then((result) => console.log(result))
+    .catch((error) => console.error(error));
+      // .then(response => response.json())
+      // .then(result => {
+      //   setSpinner(!Spinner);
+      //   if (result.statuscode == 200) {
+      //     setSpinner(false);
+      //     console.log("result",result)
+      //     setSpinner(false);
+      //   } else {
+      //     setSpinner(false);
+      //     Alert.alert(
+      //       'Identifiants incorrects',
+      //       'Nom d’utilisateur ou mot de passe incorrect',
+      //     );
+      //   }
+      //   console.log('Patience');
+      // })
+
+      // .catch(error => console.error(error));
+  };
   const sexeChoice = (
     <View
       style={{
@@ -63,7 +120,7 @@ const Register = ({navigation}) => {
               setTitle('Masculin');
             }}>
             <Text style={styles.sexeChoiceTextActif}>Homme</Text>
-            <View style={[styles.sexeLineActif, {width: 100}]}></View>
+            <View style={[styles.sexeLineActif, {width: 65}]}></View>
           </TouchableOpacity>
         ) : (
           <TouchableOpacity
@@ -74,7 +131,7 @@ const Register = ({navigation}) => {
               setTitle('Masculin');
             }}>
             <Text style={styles.sexeChoiceTextNoActif}>Homme</Text>
-            <View style={[styles.sexeLineNoActif, {width: 100}]}></View>
+            <View style={[styles.sexeLineNoActif, {width: 65}]}></View>
           </TouchableOpacity>
         )}
       </View>
@@ -88,7 +145,7 @@ const Register = ({navigation}) => {
               setTitle('Masculin');
             }}>
             <Text style={styles.sexeChoiceTextActif}>Femme</Text>
-            <View style={[styles.sexeLineActif, {width: 100}]}></View>
+            <View style={[styles.sexeLineActif, {width: 65}]}></View>
           </TouchableOpacity>
         ) : (
           <TouchableOpacity
@@ -99,7 +156,7 @@ const Register = ({navigation}) => {
               setTitle('Feminin');
             }}>
             <Text style={styles.sexeChoiceTextNoActif}>Femme</Text>
-            <View style={[styles.sexeLineNoActif, {width: 100}]}></View>
+            <View style={[styles.sexeLineNoActif, {width: 65}]}></View>
           </TouchableOpacity>
         )}
       </View>
@@ -115,7 +172,7 @@ const Register = ({navigation}) => {
             <Text style={styles.sexeChoiceTextActif}>
               Je préfère ne pas le dire
             </Text>
-            <View style={[styles.sexeLineActif, {width: 250}]}></View>
+            <View style={[styles.sexeLineActif, {width: 200}]}></View>
           </TouchableOpacity>
         ) : (
           <TouchableOpacity
@@ -128,7 +185,7 @@ const Register = ({navigation}) => {
             <Text style={styles.sexeChoiceTextNoActif}>
               Je préfère ne pas le dire
             </Text>
-            <View style={[styles.sexeLineNoActif, {width: 250}]}></View>
+            <View style={[styles.sexeLineNoActif, {width: 200}]}></View>
           </TouchableOpacity>
         )}
       </View>
@@ -277,7 +334,7 @@ const Register = ({navigation}) => {
             <View style={{flexDirection: 'row'}}>
               <TouchableOpacity
                 style={styles.selectMediaButton}
-                // onPress={() => useLibraryHandler()}
+                onPress={() => pickImage()}
                 >
                 <Text style={styles.selectMediaText}>Choisir un fichier</Text>
               </TouchableOpacity>
@@ -304,8 +361,8 @@ const Register = ({navigation}) => {
         </View>
         <Button
           onPress={() => 
-            // SendData()
-            navigation.navigate("HomeScreen")
+            SendData()
+            // navigation.navigate("HomeScreen")
           }
           title="S’inscrire"
           style={styles.signUpBtn}

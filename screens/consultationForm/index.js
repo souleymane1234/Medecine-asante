@@ -35,8 +35,10 @@ const windowHeight = Dimensions.get('window').height;
 
 const ConsultationForm = ({navigation}) => {
     const [step1Data, setStep1Data] = useState({ name: '', age: '', taille: '', poids: '', imc: '', temperature: '', ta: '', fc: '', saturation: '', date: '' });
-    const [step2Data, setStep2Data] = useState({ email: '', username: '' });
-    const [step3Data, setStep3Data] = useState({ password: '', retypePassword: '' });
+    const [step2Data, setStep2Data] = useState({ motifConsultation: '', histoireMaladie: '' });
+    const [step3Data, setStep3Data] = useState({ motifMaladie: '' });
+    const [step4Data, setStep4Data] = useState({ examenClinique: '', hypotheseDiagnostic: '', examenParaclinique: '' });
+    const [step5Data, setStep5Data] = useState({ diagnosticRetenu: ''});
     // Modal and state of mode de vie start
     const [modeVieModalVisible, setModeVieModalVisible] = useState(false);
     const [ajoutAntecedentPersoModalVisible, setAjoutAntecedentPersoModalVisible] = useState(false);
@@ -203,8 +205,8 @@ const ConsultationForm = ({navigation}) => {
                         style={styles.input}
                         placeholder="Entrez votre texte ici ..."
                         secureTextEntry={true}
-                        value={step3Data.password}
-                        onChangeText={text => setStep3Data({ ...step3Data, password: text })}
+                        value={step2Data.motifConsultation}
+                        onChangeText={text => setStep2Data({ ...step2Data, motifConsultation: text })}
                     />
                     <TouchableOpacity style={{margin: 10}}>
                         <Icon
@@ -225,8 +227,8 @@ const ConsultationForm = ({navigation}) => {
                         style={styles.input}
                         placeholder="Entrez votre texte ici ..."
                         secureTextEntry={true}
-                        value={step3Data.password}
-                        onChangeText={text => setStep3Data({ ...step3Data, password: text })}
+                        value={step2Data.histoireMaladie}
+                        onChangeText={text => setStep2Data({ ...step2Data, histoireMaladie: text })}
                     />
                     <TouchableOpacity style={{margin: 10}}>
                         <Icon
@@ -239,7 +241,7 @@ const ConsultationForm = ({navigation}) => {
                 </View>
             </View>
             {/* Motif histoire de la maladie end  */}
-            <TouchableOpacity style={{flexDirection: "row", justifyContent: "space-between", margin: 10, padding: 10}}>
+            {/* <TouchableOpacity style={{flexDirection: "row", justifyContent: "space-between", margin: 10, padding: 10}}>
                 <View style={{flexDirection: "row", alignItems: "center"}}>
                     <Image source={require('../../assets/rapport.png')} />
                     <View>
@@ -250,7 +252,8 @@ const ConsultationForm = ({navigation}) => {
                 <View>
                     <Image source={require('../../assets/chevron-right.png')} />
                 </View>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
+
           </View>
         </ProgressStep>
         <ProgressStep label="Etape 3" nextBtnText='Suivant' nextBtnTextStyle={buttonTextStyle}  previousBtnTextStyle={previousBtnText}>
@@ -263,8 +266,8 @@ const ConsultationForm = ({navigation}) => {
                         style={styles.input}
                         placeholder="Entrez votre texte ici ..."
                         secureTextEntry={true}
-                        value={step3Data.password}
-                        onChangeText={text => setStep3Data({ ...step3Data, password: text })}
+                        value={step3Data.motifMaladie}
+                        onChangeText={text => setStep3Data({ ...step3Data, motifMaladie: text })}
                     />
                     <TouchableOpacity style={{margin: 10}}>
                         <Icon
@@ -325,8 +328,8 @@ const ConsultationForm = ({navigation}) => {
                         style={styles.input}
                         placeholder="Entrez votre texte ici ..."
                         secureTextEntry={true}
-                        value={step3Data.password}
-                        onChangeText={text => setStep3Data({ ...step3Data, password: text })}
+                        value={step4Data.examenClinique}
+                        onChangeText={text => setStep4Data({ ...step4Data, examenClinique: text })}
                     />
                     <TouchableOpacity style={{margin: 10}}>
                         <Icon
@@ -376,8 +379,8 @@ const ConsultationForm = ({navigation}) => {
                         style={styles.input}
                         placeholder="Entrez votre texte ici ..."
                         secureTextEntry={true}
-                        value={step3Data.password}
-                        onChangeText={text => setStep3Data({ ...step3Data, password: text })}
+                        value={step4Data.hypotheseDiagnostic}
+                        onChangeText={text => setStep4Data({ ...step4Data, hypotheseDiagnostic: text })}
                     />
                     <TouchableOpacity style={{margin: 10}}>
                         <Icon
@@ -398,8 +401,8 @@ const ConsultationForm = ({navigation}) => {
                         style={styles.input}
                         placeholder="Entrez votre texte ici ..."
                         secureTextEntry={true}
-                        value={step3Data.password}
-                        onChangeText={text => setStep3Data({ ...step3Data, password: text })}
+                        value={step4Data.examenParaclinique}
+                        onChangeText={text => setStep4Data({ ...step4Data, examenParaclinique: text })}
                     />
                     <TouchableOpacity style={{margin: 10}}>
                         <Icon
@@ -424,8 +427,8 @@ const ConsultationForm = ({navigation}) => {
                             style={styles.input}
                             placeholder="Entrez votre texte ici ..."
                             secureTextEntry={true}
-                            value={step3Data.password}
-                            onChangeText={text => setStep3Data({ ...step3Data, password: text })}
+                            value={step5Data.diagnosticRetenu}
+                            onChangeText={text => setStep5Data({ ...step5Data, diagnosticRetenu: text })}
                         />
                         <TouchableOpacity style={{margin: 10}}>
                             <Icon
@@ -464,10 +467,10 @@ const ConsultationForm = ({navigation}) => {
                     <Image source={require('../../assets/resume.png')} />
                   </View>
                   <View style={{marginHorizontal: 10, justifyContent: "center"}}>
-                    <Text style={{fontSize: 20, color: COLORS.black, fontWeight: "bold"}}>Tatiana Lesman</Text>
-                    <Text style={{fontSize: 14}}>32 ans</Text>
-                    <Text style={{fontSize: 14}}>182cm</Text>
-                    <Text style={{fontSize: 14}}>79Kg</Text>
+                    <Text style={{fontSize: 20, color: COLORS.black, fontWeight: "bold"}}>{step1Data.name}</Text>
+                    <Text style={{fontSize: 14}}>{step1Data.age} ans</Text>
+                    <Text style={{fontSize: 14}}>{step1Data.taille} cm</Text>
+                    <Text style={{fontSize: 14}}>{step1Data.poids} Kg</Text>
                   </View>
                 </View>
                 <View style={{justifyContent: "flex-end", alignItems: "flex-end"}}>
@@ -477,7 +480,7 @@ const ConsultationForm = ({navigation}) => {
                   </Text>
                   <Text>
                     <Text>Date:</Text>
-                    <Text style={{fontWeight: "bold", color: COLORS.black}}>  20/02/2024</Text>
+                    <Text style={{fontWeight: "bold", color: COLORS.black}}>  {step1Data.date}</Text>
                   </Text>
                 </View>
               </View>
@@ -485,34 +488,34 @@ const ConsultationForm = ({navigation}) => {
                 <View style={{ flexDirection: "row"}}>
                   <View>
                     <Text style={{textAlign: "center"}}>IMC (kg/mm)</Text>
-                    <Text style={{color: COLORS.black, fontWeight: "bold", textAlign: "center"}}>20.2</Text>
+                    <Text style={{color: COLORS.black, fontWeight: "bold", textAlign: "center"}}>{step1Data.imc}</Text>
                   </View>
                 </View>
                 <LineRight/>
                 <View style={{ flexDirection: "row"}}>
                   <View>
                     <Text style={{}}>Température</Text>
-                    <Text style={{color: COLORS.black, fontWeight: "bold", textAlign: "center"}}>36.5°</Text>
+                    <Text style={{color: COLORS.black, fontWeight: "bold", textAlign: "center"}}>{step1Data.temperature}</Text>
                   </View>
                 </View>
                 <LineRight/>
                 <View style={{ flexDirection: "row"}}>
                   <View>
                     <Text style={{textAlign: "center"}}>TA (mmHg)</Text>
-                    <Text style={{color: COLORS.black, fontWeight: "bold", textAlign: "center"}}>12/120</Text>
+                    <Text style={{color: COLORS.black, fontWeight: "bold", textAlign: "center"}}>{step1Data.ta}</Text>
                   </View>
                 </View>
                 <LineRight/>
                 <View style={{ flexDirection: "row"}}>
                   <View>
                     <Text style={{textAlign: "center"}}>Fc</Text>
-                    <Text style={{color: COLORS.black, fontWeight: "bold", textAlign: "center"}}>80 bpm</Text>
+                    <Text style={{color: COLORS.black, fontWeight: "bold", textAlign: "center"}}>{step1Data.fc} bpm</Text>
                   </View>
                 </View>
               </View>
               <View style={{margin: 10}}>
                 <Text style={{backgroundColor: COLORS.button.principal, width: 200, textAlign: "center", padding: 10, borderRadius: 10, color: COLORS.white, marginBottom: 10, fontWeight: "bold", fontSize: 16}}>Motif de consultation </Text>
-                <Text>Toux persistante depuis 3 semaines</Text>
+                <Text>{step2Data.motifConsultation}</Text>
               </View>
               <View style={{margin: 10}}>
                 <Text style={{backgroundColor: COLORS.medecin_red, width: 200, textAlign: "center", padding: 10, borderRadius: 10, color: COLORS.white, marginBottom: 10, fontWeight: "bold", fontSize: 16}}>Antécédents </Text>
@@ -520,7 +523,7 @@ const ConsultationForm = ({navigation}) => {
               </View>
               <View style={{margin: 10}}>
                 <Text style={{backgroundColor: COLORS.medecin_green, width: 200, textAlign: "center", padding: 10, borderRadius: 10, color: COLORS.white, marginBottom: 10, fontWeight: "bold", fontSize: 16}}>Diagnostic </Text>
-                <Text>Bronchite aiguë</Text>
+                <Text>{step5Data.motifConsultation}</Text>
               </View>
               <TouchableOpacity style={{flexDirection: "row", justifyContent: "space-between", margin: 10, padding: 10}}>
                 <View style={{flexDirection: "row", alignItems: "center"}}>

@@ -49,14 +49,14 @@ const PatientList = ({navigation}) => {
                 </View>
                 <View style={{justifyContent: "center"}}>
                     <Text style={{fontSize: 20, color: COLORS.black, fontWeight: "bold"}}>Sidibé Lacina</Text>
-                    <Text style={{fontSize: 14}}>Ingenieur Batiment</Text>
-                    <Text style={{fontSize: 12}}>Abidjan, Cocody Angré 7e Tranche</Text>
-                    <Text style={{fontSize: 12}}>43ans / 185cm / 84Kg</Text>
+                    <Text style={{fontSize: 12}}>Ingenieur Batiment</Text>
+                    <Text style={{fontSize: 10}}>Abidjan, Cocody Angré 7e Tranche</Text>
+                    <Text style={{fontSize: 10}}>43ans / 185cm / 84Kg</Text>
                 </View>
             </View>
             <View style={{flexDirection: "row", alignItems: "flex-end", margin: 10, justifyContent: "center"}}>
-                <Text style={{fontSize: 18, color: COLORS.black, fontWeight: "bold"}}>Détails</Text>
-                <Image source={require('../../assets/chevron-right.png')} style={{marginHorizontal: 10}}/>
+                <Text style={{fontSize: 16, color: COLORS.black, fontWeight: "bold"}}>Détails</Text>
+                <Image source={require('../../assets/chevron-right.png')} style={{marginHorizontal: 5}}/>
             </View>
         </TouchableOpacity>
         <TouchableOpacity style={styles.hystotisConsultation}>
@@ -66,13 +66,13 @@ const PatientList = ({navigation}) => {
                 </View>
                 <View style={{justifyContent: "center"}}>
                     <Text style={{fontSize: 20, color: COLORS.black, fontWeight: "bold"}}>Bley Vanessa</Text>
-                    <Text style={{fontSize: 14}}>Ingenieur Batiment</Text>
-                    <Text style={{fontSize: 12}}>Abidjan, Cocody Angré 7e Tranche</Text>
-                    <Text style={{fontSize: 12}}>43ans / 185cm / 84Kg</Text>
+                    <Text style={{fontSize: 12}}>Ingenieur Batiment</Text>
+                    <Text style={{fontSize: 10}}>Abidjan, Cocody Angré 7e Tranche</Text>
+                    <Text style={{fontSize: 10}}>43ans / 185cm / 84Kg</Text>
                 </View>
             </View>
             <View style={{flexDirection: "row", alignItems: "flex-end", margin: 10, justifyContent: "center"}}>
-                <Text style={{fontSize: 18, color: COLORS.black, fontWeight: "bold"}}>Détails</Text>
+                <Text style={{fontSize: 16, color: COLORS.black, fontWeight: "bold"}}>Détails</Text>
                 <Image source={require('../../assets/chevron-right.png')} style={{marginHorizontal: 10}}/>
             </View>
         </TouchableOpacity>
@@ -85,13 +85,13 @@ const PatientList = ({navigation}) => {
                 </View>
                 <View style={{justifyContent: "center"}}>
                     <Text style={{fontSize: 20, color: COLORS.black, fontWeight: "bold"}}>Leferve Marie</Text>
-                    <Text style={{fontSize: 14}}>Ingenieur Batiment</Text>
-                    <Text style={{fontSize: 12}}>Abidjan, Cocody Angré 7e Tranche</Text>
-                    <Text style={{fontSize: 12}}>43ans / 185cm / 84Kg</Text>
+                    <Text style={{fontSize: 12}}>Ingenieur Batiment</Text>
+                    <Text style={{fontSize: 10}}>Abidjan, Cocody Angré 7e Tranche</Text>
+                    <Text style={{fontSize: 10}}>43ans / 185cm / 84Kg</Text>
                 </View>
             </View>
             <View style={{flexDirection: "row", alignItems: "flex-end", margin: 10, justifyContent: "center"}}>
-                <Text style={{fontSize: 18, color: COLORS.black, fontWeight: "bold"}}>Détails</Text>
+                <Text style={{fontSize: 16, color: COLORS.black, fontWeight: "bold"}}>Détails</Text>
                 <Image source={require('../../assets/chevron-right.png')} style={{marginHorizontal: 10}}/>
             </View>
         </TouchableOpacity>
@@ -102,13 +102,13 @@ const PatientList = ({navigation}) => {
                 </View>
                 <View style={{justifyContent: "center"}}>
                     <Text style={{fontSize: 20, color: COLORS.black, fontWeight: "bold"}}>Bley Vanessa</Text>
-                    <Text style={{fontSize: 14}}>Ingenieur Batiment</Text>
-                    <Text style={{fontSize: 12}}>Abidjan, Cocody Angré 7e Tranche</Text>
-                    <Text style={{fontSize: 12}}>43ans / 185cm / 84Kg</Text>
+                    <Text style={{fontSize: 12}}>Ingenieur Batiment</Text>
+                    <Text style={{fontSize: 10}}>Abidjan, Cocody Angré 7e Tranche</Text>
+                    <Text style={{fontSize: 10}}>43ans / 185cm / 84Kg</Text>
                 </View>
             </View>
             <View style={{flexDirection: "row", alignItems: "flex-end", margin: 10, justifyContent: "center"}}>
-                <Text style={{fontSize: 18, color: COLORS.black, fontWeight: "bold"}}>Détails</Text>
+                <Text style={{fontSize: 16, color: COLORS.black, fontWeight: "bold"}}>Détails</Text>
                 <Image source={require('../../assets/chevron-right.png')} style={{marginHorizontal: 10}}/>
             </View>
         </TouchableOpacity>

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   SafeAreaView,
   ScrollView,
@@ -14,15 +14,26 @@ import {
 } from 'react-native';
 import {COLORS} from '../../variables/color';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { jwtDecode } from "jwt-decode";
+import { decode } from "base-64";
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
-const HomeScreen = ({navigation}) => {
+const HomeScreen = ({navigation, route}) => {
+  const {Data} = route.params;
     const [accueil, setAccueil] = useState(true);
     const [consultation, setConsultation] = useState(false);
     const [notification, setNotification] = useState(false);
     const [profil, setProfil] = useState(false);
+    const [myData, setMyData] = useState()
+    global.atob = decode;
+
+    useEffect(() => {
+      const decoded = jwtDecode(Data?.data);
+      setMyData(decoded)
+      }, []);
+      console.log("ma data", myData.data.user.nom)
 
     const BottomBar = (
         <View
@@ -52,7 +63,7 @@ const HomeScreen = ({navigation}) => {
                   setProfil(false);
                 }}>
                 <Icon
-                  size={30}
+                  size={25}
                   name="home"
                   pack="material"
                   style={styles.bottomBarIconActif}
@@ -68,7 +79,7 @@ const HomeScreen = ({navigation}) => {
                   setProfil(false);
                 }}>
                 <Icon
-                  size={30}
+                  size={25}
                   name="home"
                   pack="material"
                   style={styles.bottomBarIconNoActif}
@@ -127,7 +138,7 @@ const HomeScreen = ({navigation}) => {
                   setProfil(false);
                 }}>
                 <Icon
-                  size={30}
+                  size={25}
                   name="bell"
                   pack="material"
                   style={styles.bottomBarIconActif}
@@ -143,7 +154,7 @@ const HomeScreen = ({navigation}) => {
                   setProfil(false);
                 }}>
                 <Icon
-                  size={30}
+                  size={25}
                   name="bell"
                   pack="material"
                   style={styles.bottomBarIconNoActif}
@@ -164,7 +175,7 @@ const HomeScreen = ({navigation}) => {
                   setProfil(false);
                 }}>
                 <Icon
-                  size={30}
+                  size={25}
                   name="account-circle-outline"
                   pack="material"
                   style={styles.bottomBarIconActif}
@@ -180,7 +191,7 @@ const HomeScreen = ({navigation}) => {
                   setProfil(true);
                 }}>
                 <Icon
-                  size={30}
+                  size={25}
                   name="account-circle-outline"
                   pack="material"
                   style={styles.bottomBarIconNoActif}
@@ -202,7 +213,7 @@ const HomeScreen = ({navigation}) => {
         {/* doc card start  */}
         <View style={styles.docCard}>
             <View style={{margin: 10}}>
-                <Text style={{fontSize: 25, fontWeight: "bold", color: "#000"}}>Dr. Sarrah Cecile</Text>
+                <Text style={{fontSize: 25, fontWeight: "bold", color: "#000"}}>Dr. {myData?.data.user.nom} {myData?.data.user.prenom}</Text>
                 <Text style={{marginBottom: 10}}>Généraliste</Text>
                 <Text>
                     <Text style={{fontSize: 12}}>Centre médical</Text>
@@ -224,10 +235,10 @@ const HomeScreen = ({navigation}) => {
                 <TouchableOpacity onPress={() => navigation.navigate('ConsultationList')} style={{backgroundColor: "#F4ECFF", width: "48%", borderRadius: 20}}>
                     <View style={{flexDirection: "row", justifyContent: "space-between", margin: 10}}>
                         <View>
-                            <Text style={{fontSize: 20, fontWeight: "bold", color: "#000"}}>Consultations</Text>
-                            <Text style={{fontSize: 60, fontWeight: "bold", color: "#000"}}>8</Text>
+                            <Text style={{fontSize: 16, fontWeight: "bold", color: "#000"}}>Consultations</Text>
+                            <Text style={{fontSize: 50, fontWeight: "bold", color: "#000"}}>8</Text>
                         </View>
-                        <View style={{backgroundColor: "#fff", width: 40, height: 40, borderRadius: 30, alignItems: "center", justifyContent: "center"}}>
+                        <View style={{backgroundColor: "#fff", width: 30, height: 30, borderRadius: 30, alignItems: "center", justifyContent: "center"}}>
                             <Image
                                 source={require('../../assets/consultation.png')}
                                 style={{}}
@@ -243,10 +254,10 @@ const HomeScreen = ({navigation}) => {
                 <TouchableOpacity style={{backgroundColor: "#EAFFFD", width: "48%", borderRadius: 20}} onPress={() => navigation.navigate('PatientList')}>
                     <View style={{flexDirection: "row", justifyContent: "space-between", margin: 10}}>
                         <View>
-                            <Text style={{fontSize: 20, fontWeight: "bold", color: "#000"}}>Mes patients</Text>
-                            <Text style={{fontSize: 60, fontWeight: "bold", color: "#000"}}>34</Text>
+                            <Text style={{fontSize: 16, fontWeight: "bold", color: "#000"}}>Mes patients</Text>
+                            <Text style={{fontSize: 50, fontWeight: "bold", color: "#000"}}>34</Text>
                         </View>
-                        <View style={{backgroundColor: "#fff", width: 40, height: 40, borderRadius: 30, alignItems: "center", justifyContent: "center"}}>
+                        <View style={{backgroundColor: "#fff", width: 30, height: 30, borderRadius: 30, alignItems: "center", justifyContent: "center"}}>
                             <Image
                                 source={require('../../assets/consultation.png')}
                                 style={{}}
@@ -266,10 +277,10 @@ const HomeScreen = ({navigation}) => {
                 <TouchableOpacity style={{backgroundColor: "#EDFFE3", width: "48%", borderRadius: 20}} onPress={() => navigation.navigate('VisitList')}>
                     <View style={{flexDirection: "row", justifyContent: "space-between", margin: 10}}>
                         <View>
-                            <Text style={{fontSize: 20, fontWeight: "bold", color: "#000"}}>Visites</Text>
-                            <Text style={{fontSize: 60, fontWeight: "bold", color: "#000"}}>2</Text>
+                            <Text style={{fontSize: 16, fontWeight: "bold", color: "#000"}}>Visites</Text>
+                            <Text style={{fontSize: 50, fontWeight: "bold", color: "#000"}}>2</Text>
                         </View>
-                        <View style={{backgroundColor: "#fff", width: 40, height: 40, borderRadius: 30, alignItems: "center", justifyContent: "center"}}>
+                        <View style={{backgroundColor: "#fff", width: 30, height: 30, borderRadius: 30, alignItems: "center", justifyContent: "center"}}>
                             <Image
                                 source={require('../../assets/consultation.png')}
                                 style={{}}
@@ -285,10 +296,10 @@ const HomeScreen = ({navigation}) => {
                 <View style={{backgroundColor: "#FCF0F6", width: "48%", borderRadius: 20}}>
                     <View style={{flexDirection: "row", justifyContent: "space-between", margin: 10}}>
                         <View>
-                            <Text style={{fontSize: 20, fontWeight: "bold", color: "#000"}}>Rapport analyse</Text>
-                            <Text style={{fontSize: 60, fontWeight: "bold", color: "#000"}}>0</Text>
+                            <Text style={{fontSize: 16, fontWeight: "bold", color: "#000"}}>Rapport analyse</Text>
+                            <Text style={{fontSize: 50, fontWeight: "bold", color: "#000"}}>0</Text>
                         </View>
-                        <View style={{backgroundColor: "#fff", width: 40, height: 40, borderRadius: 30, alignItems: "center", justifyContent: "center"}}>
+                        <View style={{backgroundColor: "#fff", width: 30, height: 30, borderRadius: 30, alignItems: "center", justifyContent: "center"}}>
                             <Image
                                 source={require('../../assets/consultation.png')}
                                 style={{}}
@@ -309,47 +320,47 @@ const HomeScreen = ({navigation}) => {
             <View style={{margin: 10}}>
                 <Text style={{fontSize: 22, fontWeight: "bold"}}>Historique consultation</Text>
             </View>
-            <View style={styles.hystotisConsultation}>
+            <View style={[styles.hystotisConsultation]}>
                 <View style={{margin: 10}}>
-                    <Text style={{fontSize: 22, fontWeight: "bold", color: "#000"}}>Legré Arnaud</Text>
-                    <Text>consectetuer adipiscing elit, sed diam nonummy </Text>
-                    <View style={{flexDirection: "row"}}>
+                    <Text style={{fontSize: 18, fontWeight: "bold", color: "#000"}}>Sanogo Adama</Text>
+                    <Text style={{fontSize: 12}}>consectetuer adipiscing elit, sed diam nonummy </Text>
+                    <View style={{flexDirection: "row", top: 5}}>
                         <View>                
                         <Image
                             source={require('../../assets/time.png')}
                             style={{}}
                         />
                         </View>
-                        <Text style={{marginHorizontal: 10}}>Lundi 19 Février, 2024                        Heure 9:00 - 9:30</Text>
+                        <Text style={{marginHorizontal: 10, fontSize: 12, top: 2}}>Lundi 19 Février, 2024                        Heure 9:00 - 9:30</Text>
                     </View>
                 </View>
-                <View style={{backgroundColor: "#000", width: 40, height: 40,  alignItems: "center", justifyContent: "center", borderRadius: 20, margin: 10, alignSelf: "center"}}>
+                {/* <View style={{width: 30, height: 30,  alignItems: "center", justifyContent: "center", borderRadius: 20, margin: 10, alignSelf: "center"}}>
                     <Image
                         source={require('../../assets/direction.png')}
-                        style={{}}
+                        style={{width: 20, height: 20}}
                     />
-                </View>
+                </View> */}
             </View>
-            <View style={styles.hystotisConsultation}>
+            <View style={[styles.hystotisConsultation, {marginBottom: 100}]}>
                 <View style={{margin: 10}}>
-                    <Text style={{fontSize: 22, fontWeight: "bold", color: "#000"}}>Sanogo Adama</Text>
-                    <Text>consectetuer adipiscing elit, sed diam nonummy </Text>
-                    <View style={{flexDirection: "row"}}>
+                    <Text style={{fontSize: 18, fontWeight: "bold", color: "#000"}}>Sanogo Adama</Text>
+                    <Text style={{fontSize: 12}}>consectetuer adipiscing elit, sed diam nonummy </Text>
+                    <View style={{flexDirection: "row", top: 5}}>
                         <View>                
                         <Image
                             source={require('../../assets/time.png')}
                             style={{}}
                         />
                         </View>
-                        <Text style={{marginHorizontal: 10}}>Lundi 19 Février, 2024                        Heure 9:00 - 9:30</Text>
+                        <Text style={{marginHorizontal: 10, fontSize: 12, top: 2}}>Lundi 19 Février, 2024                        Heure 9:00 - 9:30</Text>
                     </View>
                 </View>
-                <View style={{backgroundColor: "#000", width: 40, height: 40,  alignItems: "center", justifyContent: "center", borderRadius: 20, margin: 10, alignSelf: "center"}}>
+                {/* <View style={{width: 30, height: 30,  alignItems: "center", justifyContent: "center", borderRadius: 20, margin: 10, alignSelf: "center"}}>
                     <Image
                         source={require('../../assets/direction.png')}
-                        style={{}}
+                        style={{width: 20, height: 20}}
                     />
-                </View>
+                </View> */}
             </View>
         </View>
 
@@ -445,15 +456,8 @@ hystotisConsultation: {
     justifyContent: "space-between", 
     margin: 10, 
     borderRadius: 10,
-    shadowColor: "#000",
-shadowOffset: {
-	width: 0,
-	height: 1,
-},
-shadowOpacity: 0.18,
-shadowRadius: 1.00,
-
-elevation: 1
+    borderWidth: 2,
+    borderColor: "#DFF6FF"
   },
   bottomBarIconActif: {
     alignSelf: 'center',
@@ -461,7 +465,7 @@ elevation: 1
   },
   BottomBarTextActif: {
     color: COLORS.button.principal,
-    fontSize: 16,
+    fontSize: 12,
     textAlign: 'center',
   },
   bottomBarIconNoActif: {
@@ -470,7 +474,7 @@ elevation: 1
   },
   BottomBarTextNoActif: {
     color: COLORS.black,
-    fontSize: 16,
+    fontSize: 12,
   },
 });
 

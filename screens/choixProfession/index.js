@@ -47,7 +47,7 @@ const ChoixProfession = ({navigation}) => {
               setInfirmier(false);
             }}>
             <View style={{marginBottom: 10}}>
-                <Text style={{fontSize: 30, color: "#4ABBEC"}}>Docteur</Text>
+                <Text style={{fontSize: 20, color: "#4ABBEC", textAlign: "center"}}>Docteur</Text>
                 <Text>Lorem ipsum dolor sit amet, consectetur </Text>
             </View>
           </TouchableOpacity>
@@ -60,7 +60,7 @@ const ChoixProfession = ({navigation}) => {
                 setInfirmier(false);
             }}>
             <View style={{marginBottom: 10}}>
-                <Text style={{fontSize: 30}}>Docteur</Text>
+                <Text style={{fontSize: 20, textAlign: "center"}}>Docteur</Text>
                 <Text>Lorem ipsum dolor sit amet, consectetur </Text>
             </View>
           </TouchableOpacity>
@@ -77,7 +77,7 @@ const ChoixProfession = ({navigation}) => {
                 setInfirmier(false);
             }}>
             <View style={{marginBottom: 10}}>
-                <Text style={{fontSize: 30, color: "#4ABBEC"}}>Analyste</Text>
+                <Text style={{fontSize: 20, color: "#4ABBEC", textAlign: "center"}}>Analyste</Text>
                 <Text>Lorem ipsum dolor sit amet, consectetur </Text>
             </View>
           </TouchableOpacity>
@@ -90,7 +90,7 @@ const ChoixProfession = ({navigation}) => {
                 setInfirmier(false);
             }}>
             <View style={{marginBottom: 10}}>
-                <Text style={{fontSize: 30}}>Analyste</Text>
+                <Text style={{fontSize: 20, textAlign: "center"}}>Analyste</Text>
                 <Text>Lorem ipsum dolor sit amet, consectetur </Text>
             </View>
           </TouchableOpacity>
@@ -107,7 +107,7 @@ const ChoixProfession = ({navigation}) => {
                 setInfirmier(false);
             }}>
             <View style={{marginBottom: 10}}>
-                <Text style={{fontSize: 30, color: "#4ABBEC"}}>Urgentiste</Text>
+                <Text style={{fontSize: 20, color: "#4ABBEC", textAlign: "center"}}>Urgentiste</Text>
                 <Text>Lorem ipsum dolor sit amet, consectetur </Text>
             </View>
           </TouchableOpacity>
@@ -120,7 +120,7 @@ const ChoixProfession = ({navigation}) => {
                 setInfirmier(false);
             }}>
             <View style={{marginBottom: 10}}>
-                <Text style={{fontSize: 30}}>Urgentiste</Text>
+                <Text style={{fontSize: 20, textAlign: "center"}}>Urgentiste</Text>
                 <Text>Lorem ipsum dolor sit amet, consectetur </Text>
             </View>
           </TouchableOpacity>
@@ -137,7 +137,7 @@ const ChoixProfession = ({navigation}) => {
                 setInfirmier(false);
             }}>
             <View style={{marginBottom: 10}}>
-                <Text style={{fontSize: 30, color: "#4ABBEC"}}>Infirmier</Text>
+                <Text style={{fontSize: 20, color: "#4ABBEC", textAlign: "center"}}>Infirmier</Text>
                 <Text>Lorem ipsum dolor sit amet, consectetur </Text>
             </View>
           </TouchableOpacity>
@@ -150,7 +150,7 @@ const ChoixProfession = ({navigation}) => {
                 setInfirmier(true);
             }}>
             <View style={{marginBottom: 10}}>
-                <Text style={{fontSize: 30}}>Infirmier</Text>
+                <Text style={{fontSize: 20, textAlign: "center"}}>Infirmier</Text>
                 <Text>Lorem ipsum dolor sit amet, consectetur </Text>
             </View>
           </TouchableOpacity>
@@ -190,7 +190,7 @@ const styles = StyleSheet.create({
   },
   
   signUpBtn: {
-    height: 60,
+    height: 40,
     borderRadius: 19,
     marginVertical: 10,
     width: '60%',
@@ -199,7 +199,7 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.button.principal,
   },
   signUpBtnTxt: {
-    fontSize: 25,
+    fontSize: 18,
     top: -3,
   },
 });
